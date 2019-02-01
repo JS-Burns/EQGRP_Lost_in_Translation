@@ -59,7 +59,7 @@ def handle_ping(file_to_read, output_dir):
     handler(file_to_read, parse_ping, output_dir)
 
 def parse_arp(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     mac_key = 'macaddress'
     ip_key = 'ipv4address'
     adapters = parsed.findAll('arpentry')
@@ -80,7 +80,7 @@ def parse_arp(file_to_read):
     return ip_list
 
 def parse_config(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     adapters = parsed.findAll('adapter')
     if (not adapters):
         adapters = parsed.findAll('interface')
@@ -116,7 +116,7 @@ def parse_config(file_to_read):
     return ip_list
 
 def parse_netbios(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     adapters = parsed.findAll('adapter')
     if adapters:
         call_name = parsed.find('callname').string
@@ -141,7 +141,7 @@ def parse_netbios(file_to_read):
     return netbios_list
 
 def parse_netmap(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     entries = parsed.findAll('entry')
     host_list = []
     for entry in entries:
@@ -160,7 +160,7 @@ def parse_netmap(file_to_read):
     return host_list
 
 def parse_netconnections(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     entries = parsed.findAll('connection')
     host_list = []
     for entry in entries:
@@ -178,7 +178,7 @@ def parse_netconnections(file_to_read):
     return host_list
 
 def parse_ping(file_to_read):
-    parsed = BeautifulStoneSoup(file(file_to_read).read())
+    parsed = BeautifulStoneSoup(open(file_to_read).read())
     entries = parsed.findAll('response')
     host_list = []
     for entry in entries:
