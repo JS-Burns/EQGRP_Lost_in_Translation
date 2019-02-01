@@ -15,7 +15,7 @@ def main():
     start = time.clock()
     if (not dsz.cmd.Run(cmd)):
         ops.warn('Command did not execute correctly. Your run time may be useless.')
-    end = time.clock()
+    end = time.time()
     ops.info(('Run time: %s' % datetime.timedelta(seconds=int((end - start)))))
 if (__name__ == '__main__'):
     main()
